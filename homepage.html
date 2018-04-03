@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>start</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+ 
+<script>
+function updateTime(){
+ 
+//Date year - month - day
+var myDate = new Date();
+var year = myDate.getFullYear();
+var month = myDate.getMonth();
+var day = myDate.getDay();
+var daym = myDate.getDate();
+var dayarray = new Array ('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
+var montharray = new Array ('january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december');
+//Date year - month - day
+ 
+// Hour - Minute - Second
+var myTime = new Date();
+var hour = myTime.getHours();
+var minute = myTime.getMinutes();
+var second = myTime.getSeconds();
+hour = checkTime(hour);
+minute = checkTime(minute);
+second = checkTime(second);    
+// now is 24 hour clock
+ 
+// current spliced togethor
+var currentDate = dayarray[day] + ' ' + daym + ' ' + montharray[month];
+// current 24hr spliced togethor
+var currentTime = setTimeout(updateTime, 500);  
+ 
+//get date div
+var myClock = document.getElementById('date');
+ 
+//get time div
+var myWatch = document.getElementById('time').innerHTML = hour + ':' + minute;
+ 
+//write current date as string to div
+myClock.innerHTML = currentDate;
+ 
+}
+function checkTime(i){
+    if (i < 10) {i = "0" + i}; // adds a 0 infront of numbers less than 10
+   return i;
+}
+</script>
+ 
+<style>
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+text-align: center;
+}
+ 
+body,html {
+font-family: 'Roboto', sans-serif;
+overflow: hidden;
+height: 100%;
+width: 100%;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+ 
+#home {
+background-color: #111;
+height: 100%;
+width: 100%;
+z-index: -1;
+position: absolute;
+}
+ 
+#search input {
+font-size: 24px;
+padding: 7px;
+height: 20px;
+outline: none;
+border-style: solid;
+border-width: 0 0 1px 0;
+border-color: #555;
+color: #555;
+background-color: #111;
+max-width: 1200px;
+width: 70%;
+text-align: center;
+}
+ 
+#search input:focus {
+outline: none;
+color: #555;
+background-color: #111;
+}
+ 
+#search input:focus::-moz-placeholder {
+color: #555;
+background-color: #111;
+}
+ 
+#search input::-moz-placeholder {
+color: #555;
+background-color: #111;
+}
+ 
+#contain {
+position: relative;
+top: 10%;
+text-align: center;
+}
+ 
+#time {
+font-size: 96px;
+color: #555;
+letter-spacing: 1px;
+margin-right: 0;
+margin-bottom: 0;
+}
+ 
+h3 {
+font-size: 66px;
+display: inline-block;
+margin-bottom: 50px;
+color: #555;
+letter-spacing: 1px;
+display: block;
+}
+</style>
+ 
+</head>
+ 
+<body onLoad="updateTime();">
+<div id="home">
+</div>
+ 
+<div id="contain">
+<div>
+<h3 id="time"></h3>
+<h3 id="date"></h3>
+</div>
+ 
+<div id="search">
+<form class="searchForm" method="get" action="https://duckduckgo.com/?q=">
+<input class="searchBar" autocomplete="off" type="text" name="q" placeholder="" autofocus="autofocus" search_/>
+</form>
+</div>
+ 
+</div>
+ 
+</body>
+</html>
